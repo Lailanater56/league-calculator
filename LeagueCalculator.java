@@ -3,15 +3,16 @@ import java.util.Scanner;
 
 public class LeagueCalculator
 {
+	private final double NATURAL_TALENT_LIFESTEAL = .045;
+	private final double STANDARD_LIFESTEAL = .05;
+	private final double RUNIC_ARMOR_BONUS_HEALING = 1.08;
+	private static final int EXIT_CALCULATOR = 10;
+
 	private ArrayList<Double> naturalTalent;
 	private ArrayList<Double> standard;
 	private ArrayList<Champion> champs;
 	private Scanner input;
 	private int levelsToTest;
-	private final double NATURAL_TALENT_LIFESTEAL = .045;
-	private final double STANDARD_LIFESTEAL = .05;
-	private final double RUNIC_ARMOR_BONUS_HEALING = 1.08;
-	private static final int EXIT_CALCULATOR = 10;
 	
 	public LeagueCalculator()
 	{
