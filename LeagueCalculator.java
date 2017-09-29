@@ -20,7 +20,12 @@ public class LeagueCalculator
 		standard = new ArrayList<Double>();
 		champs = new ArrayList<Champion>();
 	}
-	
+
+	/*
+		Prints out the amount of lifesteal from Level 1 to Level N taking into account
+	 	the lifesteal you would have if you took natural talent instead of a standard
+	 	adc mastery setup.
+	 */
 	public void printNaturalTalentLifesteal()
 	{
 		double damage;
@@ -33,7 +38,11 @@ public class LeagueCalculator
 		}
 		System.out.println();
 	}
-	
+
+	/*
+		Prints out the amount of lifesteal from Level 1 to Level N taking into account
+	 	the lifesteal you would have if you took a standard adc mastery setup.
+	 */
 	public void printStandardLifeSteal()
 	{
 		double damage;
@@ -46,7 +55,10 @@ public class LeagueCalculator
 		}
 		System.out.println();
 	}
-	
+
+	/*
+	 	Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
+	 */
 	public void initNaturalTalentDamage()
 	{
 		for (int i = 0; i < levelsToTest; i++)
@@ -56,7 +68,10 @@ public class LeagueCalculator
 			System.out.println();
 		}
 	}
-	
+
+	/*
+	 	Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
+	 */
 	public void initStandardDamage()
 	{
 		for (int i = 0; i < levelsToTest; i++)
@@ -68,7 +83,8 @@ public class LeagueCalculator
 	}
 	
 	
-	// ERROR WON'T PRINT PRECISION. DOESN'T WORK
+	// TODO: ERROR WON'T PRINT PRECISION. DOESN'T WORK
+	// TODO: Add descriptive comment
 	public void compareLifesteal()
 	{                                                                                                    
 		System.out.println("\n**********************Comparing Both Lifesteal**************************\n");
@@ -94,7 +110,11 @@ public class LeagueCalculator
 			}
 		}
 	}
-	
+
+	/*
+		Prints all the champions currently stored in the champs array.
+		If there are no champs then it prints a simple message.
+	 */
 	public void printAllChampions()
 	{
 		if (champs.size() == 0)
@@ -107,8 +127,12 @@ public class LeagueCalculator
 			}
 		}
 	}
-	
-		public void printAllChampStats()
+
+	/*
+		Prints all the champion stats from the champions stored in the champs array.
+		If there are no champs then it prints a simple message.
+	 */
+	public void printAllChampStats()
 	{
 		if (champs.size() == 0)
 			System.out.println("There are currently no champions to print");
@@ -121,7 +145,10 @@ public class LeagueCalculator
 			}
 		}
 	}
-	
+
+	/*
+		Prints the menu options for the user.
+	 */
 	public void printMenu()
 	{																			   
 		System.out.println("_____________________________________________________");
