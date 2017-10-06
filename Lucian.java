@@ -1,3 +1,13 @@
+// TODO: THIS CLASS SHOULD BE DELETED AND JUST PUT INTO A SIMPLE CHAMPION MAP
+
+
+
+/*
+	@author: Chris Lail
+	@version: 1.0
+
+	Contains all of the relevant stats for the champion Lucian.
+ */
 public class Lucian extends Champion
 {
     private static final String NAME = "Lucian";
@@ -20,22 +30,33 @@ public class Lucian extends Champion
 	protected final double MAGIC_RESIST_GROWTH = 0;
     
     public Lucian()
-    {
+	{
         super(NAME, BASE_HEALTH, BASE_HEALTH_REGEN, BASE_MANA, BASE_MANA_REGEN,
                 BASE_ATTACK_DAMAGE, BASE_ATTACK_SPEED, BASE_ARMOR, 
-                BASE_MAGIC_RESIST);
+                BASE_MAGIC_RESIST, 1);
     }
-	
+
+	/*
+            Calculates and sets the new stats for this champion after leveling up
+    */
 	public void levelUp()
 	{
-		level = 1;
-		health = levelUpStat(BASE_HEALTH, HEALTH_GROWTH, level);
-		healthRegen = levelUpStat(BASE_HEALTH_REGEN, HEALTH_REGEN_GROWTH, level);
-		mana = levelUpStat(BASE_MANA, MANA_GROWTH, level);
-		manaRegen = levelUpStat(BASE_MANA_REGEN, MANA_REGEN_GROWTH, level);
-		attackDamage = levelUpStat(BASE_ATTACK_DAMAGE, ATTACK_DAMAGE_GROWTH, level);
-		attackSpeed = levelUpStat(BASE_ATTACK_SPEED, ATTACK_SPEED_GROWTH, level);
-		armor = levelUpStat(BASE_ARMOR, ARMOR_GROWTH, level);
-		magicResist = levelUpStat(BASE_MAGIC_RESIST, MAGIC_RESIST_GROWTH, level);
+		// If the champion's level is less than 18 then it is a valid level up
+		if (super.level < 18) {
+			// Update champion level
+			super.level += 1;
+		}
+
+		// Save the new level as a new variable to save calls to super
+		int newLevel = super.level;
+
+		health = levelUpStat(BASE_HEALTH, HEALTH_GROWTH, newLevel);
+		healthRegen = levelUpStat(BASE_HEALTH_REGEN, HEALTH_REGEN_GROWTH, newLevel);
+		mana = levelUpStat(BASE_MANA, MANA_GROWTH, newLevel);
+		manaRegen = levelUpStat(BASE_MANA_REGEN, MANA_REGEN_GROWTH, newLevel);
+		attackDamage = levelUpStat(BASE_ATTACK_DAMAGE, ATTACK_DAMAGE_GROWTH, newLevel);
+		attackSpeed = levelUpStat(BASE_ATTACK_SPEED, ATTACK_SPEED_GROWTH, newLevel);
+		armor = levelUpStat(BASE_ARMOR, ARMOR_GROWTH, newLevel);
+		magicResist = levelUpStat(BASE_MAGIC_RESIST, MAGIC_RESIST_GROWTH, newLevel);
 	}
 }

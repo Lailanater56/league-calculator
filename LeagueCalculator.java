@@ -91,7 +91,7 @@ public class LeagueCalculator
 	}
 	
 	
-	// TODO: ERROR WON'T PRINT PRECISION. DOESN'T WORK
+	// TODO: ERROR WON'T PRINT PRECISION. DOESN'T WORK PROPERLY
 	/*
 		Prints out whether the natural talent build had more lifesteal or the standard build had more
 		lifesteal. It also prints the difference of lifesteal between the two builds for each level
