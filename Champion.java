@@ -6,9 +6,9 @@
 	with masteries, runes, levels, and other stats.
  */
 public abstract class Champion
-{
-    protected String name;
-    protected int level;
+{	
+   	protected String name;
+    	protected int level;
 	protected double health;
 	protected double healthRegen;
 	protected double mana;
@@ -17,14 +17,14 @@ public abstract class Champion
 	protected double attackSpeed;
 	protected double armor;
 	protected double magicResist;
-    protected boolean runes;
+    	protected boolean runes;
 	
 	public Champion(String name, double health,double healthRegen,double mana,
 					    double manaRegen,double attackDamage, double attackSpeed,
 					    double armor, double magicResist, int level)
 	{
-        this.name = name;
-        this.level = level;
+        	this.name = name;
+        	this.level = level;
 		this.health = health;
 		this. healthRegen = healthRegen;
 		this.mana = mana;
@@ -33,7 +33,7 @@ public abstract class Champion
 		this.attackSpeed = attackSpeed;
 		this.armor = armor;
 		this.magicResist = magicResist;
-        runes = false;
+        	runes = false;
 	}
 
 	/*
@@ -46,9 +46,7 @@ public abstract class Champion
 		return attackDamage * target.armorReduction() * attackSpeed;
 	}
 
-	/*
-		An abstract level up method.
-	 */
+	// An abstract levelUp method
 	public abstract void levelUp();
 
 	/*
@@ -102,25 +100,25 @@ public abstract class Champion
 
 	/*
 		The stats added if you had a standard adc rune page
-	 */
-    public void addStandardADCRunes()
-    {
-        attackDamage += 8.5;
-        attackSpeed += .135;
-        magicResist += 12.1;
-        armor += 9;
-        runes = true;
-    }
+	*/
+   	public void addStandardADCRunes()
+    	{
+        	attackDamage += 8.5;
+        	attackSpeed += .135;
+        	magicResist += 12.1;
+        	armor += 9;
+        	runes = true;
+    	}
 
-    /*
-    	The stats added if you had Arrow's adc rune page
-     */
-    public void addArrowRunes()
-    {
-        attackDamage += 5.7;
-        attackSpeed += .141;
-        magicResist += 12.1;
-        armor += 9;
-        runes = true;
-    }
+    	/*
+    		The stats added if you had Arrow's adc rune page
+     	*/
+    	public void addArrowRunes()
+    	{
+        	attackDamage += 5.7;
+        	attackSpeed += .141;
+        	magicResist += 12.1;
+        	armor += 9;
+        	runes = true;
+    	}
 }
