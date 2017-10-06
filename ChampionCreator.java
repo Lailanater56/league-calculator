@@ -5,13 +5,11 @@
     This class handles instantiating all of the champions for use with LeagueCalculator
  */
 
-public class ChampionCreator
-{
+public class ChampionCreator {
     private String[] validChampionNames;
 
-    public ChampionCreator()
-    {
-        validChampionNames = new String[] {"lucian, vayne"};
+    public ChampionCreator() {
+        validChampionNames = new String[]{"lucian, vayne"};
     }
 
     /*
@@ -19,11 +17,9 @@ public class ChampionCreator
                         If the champion name is valid then we create a new champion
                         from their respective templates.
      */
-    public Champion findChamp(String target)
-    {
+    public Champion findChamp(String target) {
         String name = target.toLowerCase();
-        switch(name)
-        {
+        switch (name) {
             case "lucian":
                 return new Lucian();
             case "vayne":
