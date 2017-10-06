@@ -103,7 +103,7 @@ public abstract class Champion {
     }
 
     /*
-    	The stats added if you had Arrow's adc rune page
+        The stats added if you had Arrow's adc rune page
      */
     public void addArrowRunes() {
         attackDamage += 5.7;
