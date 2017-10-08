@@ -5,9 +5,28 @@
 	This class holds all the stats of a champion and functions used to manipulate them
 	with masteries, runes, levels, and other stats.
  */
-public abstract class Champion {
+public class Champion {
     protected String name;
     protected int level;
+
+    private static double baseHealth;
+    private static double baseHealthRegen;
+    private static double baseMana;
+    private static double baseManaRegen;
+    private static double baseAttackDamage;
+    private static double baseAttackSpeed;
+    private static double baseArmor;
+    private static double baseMagicResist;
+
+    protected double healthGrowth;
+    protected double healthRegenGrowth;
+    protected double manaGrowth;
+    protected double manaRegenGrowth;
+    protected double attackDamageGrowth;
+    protected double attackSpeedGrowth;
+    protected double armorGrowth;
+    protected double magicResistGrowth;
+
     protected double health;
     protected double healthRegen;
     protected double mana;
@@ -16,21 +35,43 @@ public abstract class Champion {
     protected double attackSpeed;
     protected double armor;
     protected double magicResist;
+
     protected boolean runes;
 
-    public Champion(String name, double health, double healthRegen, double mana,
-                    double manaRegen, double attackDamage, double attackSpeed,
-                    double armor, double magicResist, int level) {
+    public Champion(String name, int level, double baseHealth, double baseHealthRegen,
+                    double baseMana, double baseManaRegen, double baseAttackDamage,
+                    double baseAttackSpeed, double baseArmor, double baseMagicResist,
+                    double healthGrowth, double healthRegenGrowth, double manaGrowth,
+                    double manaRegenGrowth, double attackDamageGrowth, double attackSpeedGrowth,
+                    double armorGrowth, double magicResistGrowth) {
         this.name = name;
         this.level = level;
-        this.health = health;
-        this.healthRegen = healthRegen;
-        this.mana = mana;
-        this.manaRegen = manaRegen;
-        this.attackDamage = attackDamage;
-        this.attackSpeed = attackSpeed;
-        this.armor = armor;
-        this.magicResist = magicResist;
+        this.baseHealth = baseHealth;
+        this.baseHealthRegen = baseHealthRegen;
+        this.baseMana = baseMana;
+        this.baseManaRegen = baseManaRegen;
+        this.baseAttackDamage = baseAttackDamage;
+        this.baseAttackSpeed = baseAttackSpeed;
+        this.baseArmor = baseArmor;
+        this.baseMagicResist = baseMagicResist;
+        this.healthGrowth = healthGrowth;
+        this.healthRegenGrowth = healthRegenGrowth;
+        this.manaGrowth = manaGrowth;
+        this.manaRegenGrowth = manaRegenGrowth;
+        this.attackDamageGrowth = attackDamageGrowth;
+        this.attackSpeedGrowth = attackSpeedGrowth;
+        this.armorGrowth = armorGrowth;
+        this.magicResistGrowth = magicResistGrowth;
+
+        this.health = baseHealth;
+        this.healthRegen = baseHealthRegen;
+        this.mana = baseMana;
+        this.manaRegen = baseManaRegen;
+        this.attackDamage = baseAttackDamage;
+        this.attackSpeed = baseAttackSpeed;
+        this.armor = baseArmor;
+        this.magicResist = baseMagicResist;
+
         runes = false;
     }
 
@@ -43,20 +84,36 @@ public abstract class Champion {
         return attackDamage * target.armorReduction() * attackSpeed;
     }
 
-    // An abstract levelUp method
-    public abstract void levelUp();
+    /*
+        Calculates and sets the new stats for this champion after leveling up
+     */
+    public void levelUp() {
+        // If the champion's level is less than 18 then it is a valid level up
+        if (level < 18) {
+            // Update champion level
+            level += 1;
+        }
+
+        health = levelUpStat(baseHealth, healthGrowth);
+        healthRegen = levelUpStat(baseHealthRegen, healthRegenGrowth);
+        mana = levelUpStat(baseMana, manaGrowth);
+        manaRegen = levelUpStat(baseManaRegen, manaRegenGrowth);
+        attackDamage = levelUpStat(baseAttackDamage, attackDamageGrowth);
+        attackSpeed = levelUpStat(baseAttackSpeed, attackSpeedGrowth);
+        armor = levelUpStat(baseArmor, armorGrowth);
+        magicResist = levelUpStat(baseMagicResist, magicResistGrowth);
+    }
 
     /*
     @args:		b - The base stat you are upgrading
-			g - The growth stat you are upgrading
-			n - The level of the champion
+			    g - The growth stat you are upgrading
 
 	@return:	A double containing the new value of the upgraded stat
 
 	A formula used by Riot to calculate what a stat should be after a level up
      */
-    public double levelUpStat(double b, double g, int n) {
-        return b + ((g * (n - 1)) * (.685 + (.0175 * n)));
+    public double levelUpStat(double b, double g) {
+        return b + ((g * (level - 1)) * (.685 + (.0175 * level)));
     }
 
     /*
