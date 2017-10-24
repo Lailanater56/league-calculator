@@ -15,9 +15,9 @@ AttackDamageGrowth=2.41
 AttackSpeedGrowth=0.033
 ArmorGrowth=3
 MagicResistGrowth=0
-
-Vayne
-BaseHealth498.44
+---
+Name=Vayne
+BaseHealth=498.44
 BaseHealthRegen=5.42
 BaseMana=231.8
 BaseManaRegen=6.97
@@ -33,4 +33,3 @@ AttackDamageGrowth=2.41
 AttackSpeedGrowth=0.033
 ArmorGrowth=3
 MagicResistGrowth=0
-

@@ -1,9 +1,9 @@
 /*
-	@author: Chris Lail
-	@version: 1.0
-
-	This class holds all the stats of a champion and functions used to manipulate them
-	with masteries, runes, levels, and other stats.
+ *	@author: Chris Lail
+ *	@version: 1.0
+ *
+ *	This class holds all the stats of a champion and functions used to manipulate them
+ *	with masteries, runes, levels, and other stats.
  */
 public class Champion {
     protected String name;
@@ -76,21 +76,23 @@ public class Champion {
     }
 
     /*
-        @args:	target - The champion you are attacking.
-
-        Calculates the damage per second you would do to your target.
+     *  @args:      target - The champion you are attacking.
+     *
+     *  @return:    A double containing the damage you would inflict per second on your enemy.
+     *
+     *  Calculates the damage per second you would do to your target.
      */
     public double dps(Champion target) {
         return attackDamage * target.armorReduction() * attackSpeed;
     }
 
     /*
-        Calculates and sets the new stats for this champion after leveling up
+     *  Calculates and sets the new stats for this champion after leveling up.
      */
     public void levelUp() {
-        // If the champion's level is less than 18 then it is a valid level up
+        // If the champion's level is less than 18 then it is a valid level up.
         if (level < 18) {
-            // Update champion level
+            // Update champion level.
             level += 1;
         }
 
@@ -105,33 +107,37 @@ public class Champion {
     }
 
     /*
-    @args:		b - The base stat you are upgrading
-			    g - The growth stat you are upgrading
-
-	@return:	A double containing the new value of the upgraded stat
-
-	A formula used by Riot to calculate what a stat should be after a level up
+     *  @args:  b - The base stat you are upgrading.
+	 *		    g - The growth stat you are upgrading.
+	 *
+	 *  @return:	A double containing the new value of the upgraded stat.
+	 *
+	 *  A formula used by Riot to calculate what a stat should be after a level up.
      */
     public double levelUpStat(double b, double g) {
         return b + ((g * (level - 1)) * (.685 + (.0175 * level)));
     }
 
     /*
-        Calculates how much less damage you would take with the amount of armor you have
+     *  @return:    A double containing the reduced damage due to armor.
+     *
+     *  Calculates how much less damage you would take with the amount of armor you have.
      */
     public double armorReduction() {
         return 100 / (armor + 100);
     }
 
     /*
-        Calculates how much less damage you would take with the amount of magice resist you have
+     *  @return:    A double containing the reduced damage due to magic resist.
+     *
+     *  Calculates how much less damage you would take with the amount of magic resist you have.
      */
     public double magicReduction() {
         return 100 / (magicResist + 100);
     }
 
     /*
-        Prints out all the champions current stats
+     *  Prints out all the champions current stats.
      */
     public void printChampionStats() {
         System.out.println("Name: " + name);
@@ -149,7 +155,7 @@ public class Champion {
     // TODO: THE RUNE METHODS BELOW NEED TO BE MOVED TO THEIR OWN CLASS
 
     /*
-        The stats added if you had a standard adc rune page
+     *   The stats added if you had a standard adc rune page.
      */
     public void addStandardADCRunes() {
         attackDamage += 8.5;
@@ -160,7 +166,7 @@ public class Champion {
     }
 
     /*
-        The stats added if you had Arrow's adc rune page
+     *   The stats added if you had Arrow's adc rune page.
      */
     public void addArrowRunes() {
         attackDamage += 5.7;

@@ -1,8 +1,8 @@
 /*
-	@author: Chris Lail
-	@version: 1.0
-
-	This class facilitates the main menu of the calculator and it's helper functions.
+ *	@author: Chris Lail
+ *	@version: 1.0
+ *
+ *	This class facilitates the main menu of the calculator and it's helper functions.
  */
 
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ public class LeagueCalculator {
     }
 
     /*
-        Prints out the amount of lifesteal from Level 1 to Level N taking into account
-         the lifesteal you would have if you took natural talent instead of a standard
-         adc mastery setup.
+     *   Prints out the amount of lifesteal from Level 1 to Level N taking into account
+     *   the lifesteal you would have if you took natural talent instead of a standard
+     *   adc mastery setup.
      */
     public void printNaturalTalentLifesteal() {
         double damage;
@@ -44,8 +44,8 @@ public class LeagueCalculator {
     }
 
     /*
-        Prints out the amount of lifesteal from Level 1 to Level N taking into account
-         the lifesteal you would have if you took a standard adc mastery setup.
+     *   Prints out the amount of lifesteal from Level 1 to Level N taking into account
+     *   the lifesteal you would have if you took a standard adc mastery setup.
      */
     public void printStandardLifeSteal() {
         double damage;
@@ -59,7 +59,7 @@ public class LeagueCalculator {
     }
 
     /*
-         Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
+     *    Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
      */
     public void initNaturalTalentDamage() {
         for (int i = 0; i < levelsToTest; i++) {
@@ -70,7 +70,7 @@ public class LeagueCalculator {
     }
 
     /*
-         Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
+     *    Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
      */
     public void initStandardDamage() {
         for (int i = 0; i < levelsToTest; i++) {
@@ -83,9 +83,9 @@ public class LeagueCalculator {
 
     // TODO: ERROR WON'T PRINT PRECISION. DOESN'T WORK PROPERLY
     /*
-        Prints out whether the natural talent build had more lifesteal or the standard build had more
-		lifesteal. It also prints the difference of lifesteal between the two builds for each level
-		the user wanted to test.
+     *   Prints out whether the natural talent build had more lifesteal or the standard build had more
+	 *	lifesteal. It also prints the difference of lifesteal between the two builds for each level
+	 *	the user wanted to test.
 	 */
     public void compareLifesteal() {
         System.out.println("\n**********************Comparing Both Lifesteal**************************\n");
@@ -107,8 +107,8 @@ public class LeagueCalculator {
     }
 
     /*
-        Prints all the champions currently stored in the champs array.
-        If there are no champs then it prints a simple message.
+     *   Prints all the champions currently stored in the champs array.
+     *   If there are no champs then it prints a simple message.
      */
     public void printAllChampions() {
         if (champs.size() == 0)
@@ -121,8 +121,8 @@ public class LeagueCalculator {
     }
 
     /*
-        Prints all the champion stats from the champions stored in the champs array.
-        If there are no champs then it prints a simple message.
+     *   Prints all the champion stats from the champions stored in the champs array.
+     *   If there are no champs then it prints a simple message.
      */
     public void printAllChampStats() {
         if (champs.size() == 0)
@@ -136,7 +136,7 @@ public class LeagueCalculator {
     }
 
     /*
-        Prints the menu options for the user.
+     *   Prints the menu options for the user.
      */
     public void printMenu() {
         System.out.println("_____________________________________________________");
@@ -163,7 +163,7 @@ public class LeagueCalculator {
     public static void main(String[] args) {
         LeagueCalculator calc = new LeagueCalculator();
         ChampionCreator cc = new ChampionCreator();
-        int choice = 0; //Set to 0 just to get into the while loop the first time
+        int choice = 0; //Set to 0 just to get into the while loop the first time.
 
         int champIndex1;
         int champIndex2;
@@ -176,7 +176,7 @@ public class LeagueCalculator {
             choice = calc.input.nextInt();
             System.out.println();
             switch (choice) {
-                // Selected: Compare Lifesteal Between Natural Build (Korean) and Standard Build
+                // Selected: Compare Lifesteal Between Natural Build (Korean) and Standard Build.
                 case 1:
                     System.out.print("How many levels would you like to test? ");
                     calc.levelsToTest = calc.input.nextInt();
@@ -187,7 +187,7 @@ public class LeagueCalculator {
                     calc.printStandardLifeSteal();
                     break;
 
-                // Selected: Calculate DPS of One Champion On Another
+                // Selected: Calculate DPS of One Champion On Another.
                 case 2:
                     System.out.print("Enter the index of the champion that is attacking: ");
                     champIndex1 = calc.input.nextInt();
@@ -199,7 +199,7 @@ public class LeagueCalculator {
                             secondChamp.name, champIndex2);
                     break;
 
-                // Selected: Add New Champion
+                // Selected: Add New Champion.
                 case 3:
                     System.out.print("Enter the name of a champion: ");
                     champName = calc.input.next();
@@ -212,57 +212,57 @@ public class LeagueCalculator {
                     }
                     break;
 
-                // Selected: Delete a Champion By Index
+                // Selected: Delete a Champion By Index.
                 case 4:
                     System.out.print("Enter the index of a champion that you would like to delete: ");
                     champIndex1 = calc.input.nextInt();
                     calc.champs.remove(champIndex1);
                     break;
 
-                // Selected: Print List of Current Champions
+                // Selected: Print List of Current Champions.
                 case 5:
                     calc.printAllChampions();
                     break;
 
-                // Selected: Add Runes To a Champion By Index
+                // Selected: Add Runes To a Champion By Index.
                 case 6:
                     System.out.print("Enter the index of a champion: ");
                     champIndex1 = calc.input.nextInt();
                     System.out.println("Which Runes Would You Like To Add?");
                     System.out.println("1.   Standard");
                     System.out.println("2.   Arrow");
-                    champIndex2 = calc.input.nextInt(); //Not a champion, but a rune selection number
+                    champIndex2 = calc.input.nextInt(); //Not a champion, but a rune selection number.
                     if (champIndex2 == 1)
                         calc.champs.get(champIndex1).addStandardADCRunes();
                     else
                         calc.champs.get(champIndex1).addArrowRunes();
                     break;
 
-                // Selected: Level Up a Champion By Index
+                // Selected: Level Up a Champion By Index.
                 case 7:
                     System.out.print("Enter the index of a champion: ");
                     champIndex1 = calc.input.nextInt();
                     calc.champs.get(champIndex1).levelUp();
                     break;
 
-                // Selected: Print Champion Stats By Index
+                // Selected: Print Champion Stats By Index.
                 case 8:
                     System.out.print("Enter the index of a champion: ");
                     champIndex1 = calc.input.nextInt();
                     calc.champs.get(champIndex1).printChampionStats();
                     break;
 
-                // Selected: Print All Champions Stats
+                // Selected: Print All Champions Stats.
                 case 9:
                     calc.printAllChampStats();
                     break;
 
-                // Selected: Exit The Menu
+                // Selected: Exit The Menu.
                 case EXIT_CALCULATOR:
                     System.out.println("Goodbye.");
                     break;
 
-                // Selected: An invalid option for the calculator
+                // Selected: An invalid option for the calculator.
                 default:
                     System.out.println("Sorry, that is an invalid choice. Please try again");
             }
