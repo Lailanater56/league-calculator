@@ -9,11 +9,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LeagueCalculator {
+    private static final int EXIT_CALCULATOR = 10;
     private final double NATURAL_TALENT_LIFESTEAL = .045;
     private final double STANDARD_LIFESTEAL = .05;
     private final double RUNIC_ARMOR_BONUS_HEALING = 1.08;
-    private static final int EXIT_CALCULATOR = 10;
-
     private ArrayList<Double> naturalTalent;
     private ArrayList<Double> standard;
     private ArrayList<Champion> champs;
@@ -25,139 +24,6 @@ public class LeagueCalculator {
         naturalTalent = new ArrayList<Double>();
         standard = new ArrayList<Double>();
         champs = new ArrayList<Champion>();
-    }
-
-    /*
-        Prints out the amount of lifesteal from Level 1 to Level N taking into account
-         the lifesteal you would have if you took natural talent instead of a standard
-         adc mastery setup.
-     */
-    public void printNaturalTalentLifesteal() {
-        double damage;
-        System.out.println("**********************Natural Talent Lifesteal********************\n");
-        for (int i = 0; i < levelsToTest; i++) {
-            damage = naturalTalent.get(i);
-            damage = (damage * NATURAL_TALENT_LIFESTEAL) * RUNIC_ARMOR_BONUS_HEALING;
-            System.out.println("Lifesteal for level " + (i + 1) + ": " + damage);
-        }
-        System.out.println();
-    }
-
-    /*
-        Prints out the amount of lifesteal from Level 1 to Level N taking into account
-         the lifesteal you would have if you took a standard adc mastery setup.
-     */
-    public void printStandardLifeSteal() {
-        double damage;
-        System.out.println("**********************Standard Lifesteal**************************\n");
-        for (int i = 0; i < levelsToTest; i++) {
-            damage = standard.get(i);
-            damage = damage * STANDARD_LIFESTEAL;
-            System.out.println("Lifesteal for level " + (i + 1) + ": " + damage);
-        }
-        System.out.println();
-    }
-
-    /*
-         Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
-     */
-    public void initNaturalTalentDamage() {
-        for (int i = 0; i < levelsToTest; i++) {
-            System.out.print("Enter natural talent damage for level " + (i + 1) + ": ");
-            naturalTalent.add(input.nextDouble());
-            System.out.println();
-        }
-    }
-
-    /*
-         Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
-     */
-    public void initStandardDamage() {
-        for (int i = 0; i < levelsToTest; i++) {
-            System.out.print("Enter standard damage for level " + (i + 1) + ": ");
-            standard.add(input.nextDouble());
-            System.out.println();
-        }
-    }
-
-
-    // TODO: ERROR WON'T PRINT PRECISION. DOESN'T WORK PROPERLY
-    /*
-        Prints out whether the natural talent build had more lifesteal or the standard build had more
-		lifesteal. It also prints the difference of lifesteal between the two builds for each level
-		the user wanted to test.
-	 */
-    public void compareLifesteal() {
-        System.out.println("\n**********************Comparing Both Lifesteal**************************\n");
-        double naturalTalentLifesteal;
-        double standardLifesteal;
-        double comparedLifesteal;
-        for (int i = 0; i < levelsToTest; i++) {
-            naturalTalentLifesteal = naturalTalent.get(i);
-            standardLifesteal = standard.get(i);
-            comparedLifesteal = naturalTalentLifesteal - standardLifesteal;
-            if (comparedLifesteal > 0) {
-                System.out.printf("Natural Talent healed more at level " + (i + 1) + " by %.5f", comparedLifesteal);
-            } else if (comparedLifesteal < 0) {
-                System.out.println("Standard healed more at level " + (i + 1) + " by " + Math.abs(comparedLifesteal));
-            } else {
-                System.out.println("They both healed the same at level " + (i + 1));
-            }
-        }
-    }
-
-    /*
-        Prints all the champions currently stored in the champs array.
-        If there are no champs then it prints a simple message.
-     */
-    public void printAllChampions() {
-        if (champs.size() == 0)
-            System.out.println("There are currently no champions to print");
-        else {
-            for (int i = 0; i < champs.size(); i++) {
-                System.out.printf("%d | %s\n", i, champs.get(i).name);
-            }
-        }
-    }
-
-    /*
-        Prints all the champion stats from the champions stored in the champs array.
-        If there are no champs then it prints a simple message.
-     */
-    public void printAllChampStats() {
-        if (champs.size() == 0)
-            System.out.println("There are currently no champions to print");
-        else {
-            for (int i = 0; i < champs.size(); i++) {
-                champs.get(i).printChampionStats();
-                System.out.println();
-            }
-        }
-    }
-
-    /*
-        Prints the menu options for the user.
-     */
-    public void printMenu() {
-        System.out.println("_____________________________________________________");
-        System.out.println("|                                                   |");
-        System.out.println("|     Welcome to Papa Johnz League Calculator       |");
-        System.out.println("|___________________________________________________|");
-        System.out.println("|                                                   |");
-        System.out.println("|   1.  Compare Lifesteal Between Natural Talent    |");
-        System.out.println("|           Build (Korean) and Standard Build       |");
-        System.out.println("|   2.  Calculate DPS of One Champion On Another    |");
-        System.out.println("|   3.  Add New Champion                            |");
-        System.out.println("|   4.  Delete a Champion By Index                  |");
-        System.out.println("|   5.  Print List of Current Champions             |");
-        System.out.println("|   6.  Add Runes To a Champion By Index            |");
-        System.out.println("|   7.  Level Up a Champion By Index                |");
-        System.out.println("|   8.  Print Champion Stats By Index               |");
-        System.out.println("|   9.  Print All Champions Stats                   |");
-        System.out.println("|   10. Exit The Menu                               |");
-        System.out.println("|___________________________________________________|");
-        System.out.println();
-        System.out.print("Please select a menu option: ");
     }
 
     public static void main(String[] args) {
@@ -267,5 +133,137 @@ public class LeagueCalculator {
                     System.out.println("Sorry, that is an invalid choice. Please try again");
             }
         }
+    }
+
+    /*
+        Prints out the amount of lifesteal from Level 1 to Level N taking into account
+         the lifesteal you would have if you took natural talent instead of a standard
+         adc mastery setup.
+     */
+    public void printNaturalTalentLifesteal() {
+        double damage;
+        System.out.println("**********************Natural Talent Lifesteal********************\n");
+        for (int i = 0; i < levelsToTest; i++) {
+            damage = naturalTalent.get(i);
+            damage = (damage * NATURAL_TALENT_LIFESTEAL) * RUNIC_ARMOR_BONUS_HEALING;
+            System.out.println("Lifesteal for level " + (i + 1) + ": " + damage);
+        }
+        System.out.println();
+    }
+
+    /*
+        Prints out the amount of lifesteal from Level 1 to Level N taking into account
+         the lifesteal you would have if you took a standard adc mastery setup.
+     */
+    public void printStandardLifeSteal() {
+        double damage;
+        System.out.println("**********************Standard Lifesteal**************************\n");
+        for (int i = 0; i < levelsToTest; i++) {
+            damage = standard.get(i);
+            damage = damage * STANDARD_LIFESTEAL;
+            System.out.println("Lifesteal for level " + (i + 1) + ": " + damage);
+        }
+        System.out.println();
+    }
+
+    /*
+         Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
+     */
+    public void initNaturalTalentDamage() {
+        for (int i = 0; i < levelsToTest; i++) {
+            System.out.print("Enter natural talent damage for level " + (i + 1) + ": ");
+            naturalTalent.add(input.nextDouble());
+            System.out.println();
+        }
+    }
+
+    /*
+         Takes input from the user asking them to plug in the damage done from Level 1 to Level N.
+     */
+    public void initStandardDamage() {
+        for (int i = 0; i < levelsToTest; i++) {
+            System.out.print("Enter standard damage for level " + (i + 1) + ": ");
+            standard.add(input.nextDouble());
+            System.out.println();
+        }
+    }
+
+    // TODO: ERROR WON'T PRINT PRECISION. DOESN'T WORK PROPERLY
+    /*
+        Prints out whether the natural talent build had more lifesteal or the standard build had more
+		lifesteal. It also prints the difference of lifesteal between the two builds for each level
+		the user wanted to test.
+	 */
+    public void compareLifesteal() {
+        System.out.println("\n**********************Comparing Both Lifesteal**************************\n");
+        double naturalTalentLifesteal;
+        double standardLifesteal;
+        double comparedLifesteal;
+        for (int i = 0; i < levelsToTest; i++) {
+            naturalTalentLifesteal = naturalTalent.get(i);
+            standardLifesteal = standard.get(i);
+            comparedLifesteal = naturalTalentLifesteal - standardLifesteal;
+            if (comparedLifesteal > 0) {
+                System.out.printf("Natural Talent healed more at level " + (i + 1) + " by %.5f", comparedLifesteal);
+            } else if (comparedLifesteal < 0) {
+                System.out.println("Standard healed more at level " + (i + 1) + " by " + Math.abs(comparedLifesteal));
+            } else {
+                System.out.println("They both healed the same at level " + (i + 1));
+            }
+        }
+    }
+
+    /*
+        Prints all the champions currently stored in the champs array.
+        If there are no champs then it prints a simple message.
+     */
+    public void printAllChampions() {
+        if (champs.size() == 0)
+            System.out.println("There are currently no champions to print");
+        else {
+            for (int i = 0; i < champs.size(); i++) {
+                System.out.printf("%d | %s\n", i, champs.get(i).name);
+            }
+        }
+    }
+
+    /*
+        Prints all the champion stats from the champions stored in the champs array.
+        If there are no champs then it prints a simple message.
+     */
+    public void printAllChampStats() {
+        if (champs.size() == 0)
+            System.out.println("There are currently no champions to print");
+        else {
+            for (int i = 0; i < champs.size(); i++) {
+                champs.get(i).printChampionStats();
+                System.out.println();
+            }
+        }
+    }
+
+    /*
+        Prints the menu options for the user.
+     */
+    public void printMenu() {
+        System.out.println("_____________________________________________________");
+        System.out.println("|                                                   |");
+        System.out.println("|     Welcome to Papa Johnz League Calculator       |");
+        System.out.println("|___________________________________________________|");
+        System.out.println("|                                                   |");
+        System.out.println("|   1.  Compare Lifesteal Between Natural Talent    |");
+        System.out.println("|           Build (Korean) and Standard Build       |");
+        System.out.println("|   2.  Calculate DPS of One Champion On Another    |");
+        System.out.println("|   3.  Add New Champion                            |");
+        System.out.println("|   4.  Delete a Champion By Index                  |");
+        System.out.println("|   5.  Print List of Current Champions             |");
+        System.out.println("|   6.  Add Runes To a Champion By Index            |");
+        System.out.println("|   7.  Level Up a Champion By Index                |");
+        System.out.println("|   8.  Print Champion Stats By Index               |");
+        System.out.println("|   9.  Print All Champions Stats                   |");
+        System.out.println("|   10. Exit The Menu                               |");
+        System.out.println("|___________________________________________________|");
+        System.out.println();
+        System.out.print("Please select a menu option: ");
     }
 }
